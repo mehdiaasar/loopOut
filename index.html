@@ -16,22 +16,25 @@
   code { background: #EFE9DE; padding: 1px 5px; border-radius: 4px; font-size: .9em; }
   hr { border: none; border-top: 1px solid #E6DFD8; margin: 2em 0; }
   ul { padding-left: 1.3em; }
+  blockquote { margin: 1.4em 0; padding: 14px 18px; border-left: 4px solid #CC785C;
+               background: #EFE9DE; border-radius: 0 8px 8px 0; }
   @media (prefers-color-scheme: dark) {
     body { color: #FAF9F5; background: #181715; }
     h2,hr { border-color: #2F2C28; }
-    code { background: #252320; }
+    code, blockquote { background: #252320; }
   }
 </style>
 </head>
 <body>
 <h1>Privacy Policy — LoopOut</h1>
-<p><strong>Last updated:</strong> 17 June 2026</p>
+<p><strong>Last updated:</strong> 18 June 2026</p>
 <p>LoopOut ("the app", "we", "us") is a digital-wellness app that helps you</p>
 <p>track and limit how many short-form videos ("reels", "Shorts", "Spotlight",</p>
 <p>TikToks) you watch on social media. This policy explains exactly what data the app</p>
 <p>accesses, how it is used, and the choices you have.</p>
 <p>We do <strong>not</strong> sell your data, show ads, or use third-party advertising or analytics</p>
 <p>SDKs.</p>
+<blockquote><strong>Current version (v1):</strong> LoopOut works **fully offline and entirely on your device<strong>. It collects and transmits </strong>no** data. Google Sign-In and the optional cloud backup described below are <strong>not available in this version</strong> — they are documented here for transparency and are planned for a future update. Until then, nothing you do in the app ever leaves your phone.</blockquote>
 <hr>
 <h2>Summary</h2>
 <ul>
@@ -59,7 +62,7 @@
 <p>The service detects when a full-screen short-form video feed is being scrolled and</p>
 <p>increments a counter. **It does not read, log, store, or transmit the text,</p>
 <p>images, messages, captions, or any other content of these apps.** Detection happens</p>
-<p>on-device in real time and only the resulting *count* is kept.</p>
+<p>on-device in real time and only the resulting <em>count</em> is kept.</p>
 <p>The service is enabled only after an explicit consent screen, and you can disable it</p>
 <p>at any time in <strong>Android Settings → Accessibility</strong>.</p>
 <h3>2. Screen-time data (Usage Access)</h3>
@@ -84,6 +87,8 @@
 <p>(below).</p>
 <hr>
 <h2>Optional cloud backup</h2>
+<p>*Not available in the current version (v1) — planned for a future update. The</p>
+<p>description below applies only once the feature ships.*</p>
 <p>If — and only if — you (a) sign in with Google <strong>and</strong> (b) turn on the "cloud</p>
 <p>backup" setting, the app uploads one summary document per completed day to a private</p>
 <p>Google Firebase Firestore database scoped to your account</p>
