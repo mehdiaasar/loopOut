@@ -18,129 +18,174 @@
   ul { padding-left: 1.3em; }
   blockquote { margin: 1.4em 0; padding: 14px 18px; border-left: 4px solid #CC785C;
                background: #EFE9DE; border-radius: 0 8px 8px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1.2em 0; font-size: .95em; }
+  th, td { border: 1px solid #E6DFD8; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #EFE9DE; }
   @media (prefers-color-scheme: dark) {
     body { color: #FAF9F5; background: #181715; }
     h2,hr { border-color: #2F2C28; }
     code, blockquote { background: #252320; }
+    th, td { border-color: #2F2C28; }
+    th { background: #252320; }
   }
 </style>
 </head>
 <body>
+
 <h1>Privacy Policy — LoopOut</h1>
-<p><strong>Last updated:</strong> 18 June 2026</p>
-<p>LoopOut ("the app", "we", "us") is a digital-wellness app that helps you</p>
-<p>track and limit how many short-form videos ("reels", "Shorts", "Spotlight",</p>
-<p>TikToks) you watch on social media. This policy explains exactly what data the app</p>
-<p>accesses, how it is used, and the choices you have.</p>
-<p>We do <strong>not</strong> sell your data, show ads, or use third-party advertising or analytics</p>
-<p>SDKs.</p>
-<blockquote><strong>Current version (v1):</strong> LoopOut works **fully offline and entirely on your device<strong>. It collects and transmits </strong>no** data. Google Sign-In and the optional cloud backup described below are <strong>not available in this version</strong> — they are documented here for transparency and are planned for a future update. Until then, nothing you do in the app ever leaves your phone.</blockquote>
+<p><strong>Last updated:</strong> 28 July 2026</p>
+
+<p>LoopOut ("the app") counts the short-form videos you watch — Instagram Reels, YouTube
+Shorts, TikTok, Snapchat Spotlight and Facebook Reels — and helps you stay under a daily
+limit you set.</p>
+
+<p>This policy describes exactly what the app accesses, what stays on your phone, and what
+is uploaded if you turn on cloud backup.</p>
+
+<p>We do not sell your data. The app contains no ads, no analytics SDK, and no crash
+reporting.</p>
+
 <hr>
+
 <h2>Summary</h2>
 <ul>
-<li>All of your usage data is stored <strong>locally on your device</strong> by default.</li>
-<li>The app reads on-screen content <strong>only</strong> from Instagram, YouTube, TikTok, and</li>
+  <li>The app works <strong>fully offline with no account</strong>. Used that way, nothing you do leaves your phone.</li>
+  <li><strong>Cloud backup is optional and off unless you turn it on.</strong> It requires you to sign in with Google <em>and</em> separately agree to backup.</li>
+  <li>If backup is on, the app uploads <strong>daily numeric totals only</strong> — a short, fixed list of numbers set out in full below.</li>
+  <li><strong>Screen content is never uploaded.</strong> The Accessibility service reads on-screen information only to recognise that a short video was watched; that content is discarded immediately and only the resulting count is kept.</li>
 </ul>
-<p>  Snapchat, and <strong>only</strong> to count short-form videos and enforce the limits you set.</p>
-<ul>
-<li>The content of the videos you watch is <strong>never</strong> recorded, stored, or transmitted.</li>
-<li>Cloud backup is <strong>optional, off by default</strong>, and uploads only daily *numerical</li>
-</ul>
-<p>  summaries* — never screen content.</p>
+
 <hr>
-<h2>What data the app accesses</h2>
-<h3>1. On-screen content (Accessibility Service)</h3>
-<p>To count reels and enforce your limits, the app uses Android's Accessibility</p>
-<p>Service. It inspects the on-screen view hierarchy of a **restricted list of apps</p>
-<p>only**:</p>
+
+<h2>What the app accesses on your device</h2>
+
+<h3>On-screen content (Accessibility service)</h3>
+<p>To count videos, the app inspects the on-screen view hierarchy of a fixed list of apps,
+and no others:</p>
 <ul>
-<li>Instagram (<code>com.instagram.android</code>)</li>
-<li>YouTube (<code>com.google.android.youtube</code>)</li>
-<li>TikTok (<code>com.zhiliaoapp.musically</code>)</li>
-<li>Snapchat (<code>com.snapchat.android</code>)</li>
+  <li>Instagram (<code>com.instagram.android</code>)</li>
+  <li>YouTube (<code>com.google.android.youtube</code>)</li>
+  <li>TikTok (<code>com.zhiliaoapp.musically</code>)</li>
+  <li>Snapchat (<code>com.snapchat.android</code>)</li>
+  <li>Facebook (<code>com.facebook.katana</code>)</li>
 </ul>
-<p>The service detects when a full-screen short-form video feed is being scrolled and</p>
-<p>increments a counter. **It does not read, log, store, or transmit the text,</p>
-<p>images, messages, captions, or any other content of these apps.** Detection happens</p>
-<p>on-device in real time and only the resulting <em>count</em> is kept.</p>
-<p>The service is enabled only after an explicit consent screen, and you can disable it</p>
-<p>at any time in <strong>Android Settings → Accessibility</strong>.</p>
-<h3>2. Screen-time data (Usage Access)</h3>
-<p>With your permission, the app reads Android's app-usage statistics to show how many</p>
-<p>minutes you spent in the tracked apps. This is queried live from the system and is</p>
-<p><strong>not stored</strong> in the app's database.</p>
-<h3>3. Account information (optional)</h3>
-<p>If you choose to sign in with Google to enable cloud backup, the app receives your</p>
-<p>Google account identifier and basic profile information (name, email, avatar) via</p>
-<p>Google Sign-In / Firebase Authentication. Sign-in is entirely optional — the app is</p>
-<p>fully functional without an account.</p>
+<p>This list is enforced by Android itself, from the app's accessibility configuration. The
+system delivers the app nothing at all about any other app you use.</p>
+<p>The service looks for the signature of a full-screen short-video player and increments a
+counter. It reads video captions and creator names <strong>only in memory, and only to tell one
+video from the next</strong> so the same video is not counted twice. That text is never written to
+storage, never logged, and never uploaded. Messages, photos, browsing history and the
+content of any app are never read, stored or transmitted.</p>
+<p>You enable this service yourself in Android Settings, after an explicit in-app
+explanation, and can disable it at any time in <strong>Settings → Accessibility</strong>.</p>
+
+<h3>Screen-time statistics (Usage access)</h3>
+<p>With your permission, the app reads Android's own app-usage statistics to show how many
+minutes you spent in the tracked apps. This is queried live from the system each time it is
+displayed and is <strong>not stored</strong> in the app's database.</p>
+
+<h3>Apps you add yourself</h3>
+<p>You can add other installed apps to track their screen time. For those apps the app stores
+the package name and label, and reads screen time only. Their on-screen content is never
+inspected.</p>
+
 <hr>
-<h2>Data stored on your device</h2>
-<p>The following is stored locally on your device and is required for the app to</p>
-<p>function:</p>
+
+<h2>What is stored on your device</h2>
 <ul>
-<li>Daily counts of short-form videos watched, per platform</li>
-<li>The daily limits you set</li>
-<li>Streak history and a derived "brain health" score</li>
+  <li>Daily counts of short videos watched, per platform</li>
+  <li>The daily limits you set, and any per-app time limits</li>
+  <li>Streak history and a derived "brain health" score</li>
+  <li>The package name and label of any app you add to tracking</li>
+  <li>Your settings: blocking mode, theme, counter size</li>
+  <li>If you set a parental PIN: a salted PBKDF2 hash of it. The PIN itself is never stored.</li>
+  <li>If you sign in: your email address, display name and profile-picture URL</li>
 </ul>
-<p>This data never leaves your device unless you explicitly enable cloud backup</p>
-<p>(below).</p>
+<p>This is removed when you uninstall the app or clear its storage in Android Settings.</p>
+
 <hr>
-<h2>Optional cloud backup</h2>
-<p>*Not available in the current version (v1) — planned for a future update. The</p>
-<p>description below applies only once the feature ships.*</p>
-<p>If — and only if — you (a) sign in with Google <strong>and</strong> (b) turn on the "cloud</p>
-<p>backup" setting, the app uploads one summary document per completed day to a private</p>
-<p>Google Firebase Firestore database scoped to your account</p>
-<p>(<code>users/{your-account-id}/dailyLogs/{date}</code>). Each document contains only **numeric</p>
-<p>daily aggregates**:</p>
+
+<h2>Cloud backup (optional)</h2>
+
+<p>Cloud backup is <strong>off</strong> until you both sign in with Google and choose <strong>"Enable backup"</strong> in
+the dialog shown immediately after sign-in. Declining leaves the app fully functional;
+nothing is uploaded.</p>
+
+<h3>Signing in</h3>
+<p>Sign-in uses Google. The app receives your Google account identifier, name, email and
+profile-picture URL. Your Google password is never seen by the app. Sign-in alone uploads no
+usage data — backup is a separate choice.</p>
+<p>Your profile picture, when shown in the app, is loaded directly from Google's servers.</p>
+
+<h3>Exactly what is uploaded</h3>
+<p>If backup is on, the app uploads <strong>one row per completed day</strong>. Today is never uploaded;
+only days that have already ended. The complete list of fields is:</p>
+
+<table>
+  <tr><th>Field</th><th>What it is</th></tr>
+  <tr><td><code>user_id</code></td><td>Your account identifier</td></tr>
+  <tr><td><code>date</code></td><td>The calendar date the row is for</td></tr>
+  <tr><td><code>reels_instagram</code>, <code>reels_youtube</code>, <code>reels_tiktok</code>, <code>reels_snapchat</code>, <code>reels_facebook</code></td><td>Number of videos watched that day, per platform</td></tr>
+  <tr><td><code>limit_instagram</code>, <code>limit_youtube</code>, <code>limit_tiktok</code>, <code>limit_snapchat</code>, <code>limit_facebook</code></td><td>The daily limits you had set</td></tr>
+  <tr><td><code>minutes_instagram</code>, <code>minutes_youtube</code>, <code>minutes_tiktok</code>, <code>minutes_snapchat</code>, <code>minutes_facebook</code></td><td>Minutes spent in each app — <strong>only for the most recently completed day</strong></td></tr>
+  <tr><td><code>brain_health_score</code></td><td>The day's score, 0–100</td></tr>
+  <tr><td><code>under_limit</code>, <code>streak_day</code></td><td>Whether you stayed under your limit, and your streak length</td></tr>
+</table>
+
+<p>That is the entire list. Nothing else is transmitted. In particular the app never uploads:
+screen content, video titles, captions, creator names, which specific videos you watched, the
+apps you added to tracking, your per-app limits, your settings, or your parental PIN.</p>
+<p>Backup begins from the day you turn it on. Days before that are not uploaded.</p>
+
+<h3>Who processes it</h3>
+<p>Backup data is stored with <strong>Supabase</strong> (Supabase Inc.), which provides the database and the
+sign-in service. Data is held on Supabase infrastructure in <strong>Sydney, Australia</strong> (region
+<code>ap-southeast-2</code>). If you are outside Australia, turning on backup means the data listed
+above is transferred to and stored in Australia.</p>
+<p>Access is enforced by database row-level security: rows are readable and writable only by
+the account that created them. Data is transmitted over HTTPS.</p>
+<p>Supabase's privacy policy: <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></p>
+<p>No other third party receives your data.</p>
+
+<hr>
+
+<h2>Turning backup off, and deleting your data</h2>
+
+<blockquote><strong>In this version there is no in-app switch to turn backup off, sign out, or delete your
+account after you have enabled backup.</strong> These controls are being added; until they ship,
+use the options below.</blockquote>
+
 <ul>
-<li>Per-platform video counts for the day</li>
-<li>Per-platform daily limits</li>
-<li>Per-platform minutes (yesterday only)</li>
-<li>The day's "brain health" score</li>
-<li>Streak status and streak day number</li>
+  <li><strong>To stop further uploads:</strong> clear the app's storage in <strong>Android Settings → Apps → LoopOut
+      → Storage → Clear data</strong>, or uninstall the app. Both end the session and switch backup off.
+      Clearing data also erases your on-device history.</li>
+  <li><strong>To delete data already uploaded, or to delete your account:</strong> email
+      <a href="mailto:mehdiaasar0@gmail.com">mehdiaasar0@gmail.com</a> from the address you signed in
+      with. Your rows and your account record will be deleted. Deleting the account removes all
+      associated backup rows.</li>
 </ul>
-<p>No screen content, no message text, no browsing history, and no real-time activity</p>
-<p>is ever uploaded. Backup is off by default and can be turned off at any time in the</p>
-<p>app's settings. Your data is readable only by your authenticated account.</p>
+
 <hr>
-<h2>How we use the data</h2>
-<p>The data is used solely to provide the app's features: counting short-form videos,</p>
-<p>enforcing the limits you set, showing your stats and streaks, and (optionally)</p>
-<p>backing up your daily summaries to your own account. We do not use it for</p>
-<p>advertising, profiling, or any purpose unrelated to the app's stated function, and</p>
-<p>we do not share it with third parties.</p>
+
+<h2>How the data is used</h2>
+<p>Solely to run the app's features: counting videos, enforcing the limits you set, showing
+your stats and streaks, and — if you enabled it — backing up your daily totals to your own
+account. It is not used for advertising or profiling, and it is not shared with anyone.</p>
+
 <hr>
-<h2>Third-party services</h2>
-<ul>
-<li><strong>Google Firebase (Authentication &amp; Firestore)</strong> — used only if you opt into</li>
-</ul>
-<p>  Google Sign-In and cloud backup. Governed by Google's privacy policy:</p>
-<p>  <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
-<p>No other third-party services receive your data.</p>
-<hr>
-<h2>Data retention and deletion</h2>
-<ul>
-<li><strong>Local data:</strong> removed when you uninstall the app or clear its storage from</li>
-</ul>
-<p>  Android Settings.</p>
-<ul>
-<li><strong>Cloud backup data:</strong> you can disable backup at any time. To delete data already</li>
-</ul>
-<p>  uploaded, sign in, turn off backup, and contact us at the address below to request</p>
-<p>  deletion of your stored documents; we will remove them.</p>
-<hr>
+
 <h2>Children</h2>
-<p>The app is not directed at children under 13 and does not knowingly collect data</p>
-<p>from them.</p>
+<p>The app is not directed at children under 13 and does not knowingly collect data from them.</p>
+
 <hr>
-<h2>Changes to this policy</h2>
-<p>We may update this policy as the app evolves. Material changes will be reflected by</p>
-<p>updating the "Last updated" date above.</p>
+
+<h2>Changes</h2>
+<p>Material changes will be reflected by updating the date at the top of this policy.</p>
+
 <hr>
+
 <h2>Contact</h2>
-<p>For privacy questions or data-deletion requests, contact:</p>
-<p><strong>Aasar Mehdi</strong> — mehdiaasar0@gmail.com</p>
+<p><strong>Aasar Mehdi</strong> — <a href="mailto:mehdiaasar0@gmail.com">mehdiaasar0@gmail.com</a></p>
+
 </body>
 </html>
