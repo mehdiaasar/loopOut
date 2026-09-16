@@ -33,7 +33,7 @@
 <body>
 
 <h1>Privacy Policy — LoopOut</h1>
-<p><strong>Last updated:</strong> 28 July 2026</p>
+<p><strong>Last updated:</strong> 16 August 2026</p>
 
 <p>LoopOut ("the app") counts the short-form videos you watch — Instagram Reels, YouTube
 Shorts, TikTok, Snapchat Spotlight and Facebook Reels — and helps you stay under a daily
@@ -42,17 +42,20 @@ limit you set.</p>
 <p>This policy describes exactly what the app accesses, what stays on your phone, and what
 is uploaded if you turn on cloud backup.</p>
 
-<p>We do not sell your data. The app contains no ads, no analytics SDK, and no crash
-reporting.</p>
+<p>We do not sell your data, and the app contains no ads. The app does use <strong>Google Firebase
+Analytics and Firebase Crashlytics</strong> to understand which features are used and to receive
+crash reports. Analytics is on by default and can be switched off in
+<strong>Settings → Account → Share usage data</strong>.</p>
 
 <hr>
 
 <h2>Summary</h2>
 <ul>
-  <li>The app works <strong>fully offline with no account</strong>. Used that way, nothing you do leaves your phone.</li>
-  <li><strong>Cloud backup is optional and off unless you turn it on.</strong> It requires you to sign in with Google <em>and</em> separately agree to backup.</li>
-  <li>If backup is on, the app uploads <strong>daily numeric totals only</strong> — a short, fixed list of numbers set out in full below.</li>
+  <li>The app works <strong>without an account</strong>. Used that way, none of your usage history leaves your phone, though anonymous app-usage analytics is still sent unless you switch it off.</li>
+  <li><strong>Signing in with Google turns on cloud backup.</strong> Backup is part of having an account: if you sign in, your daily totals are uploaded, and there is no separate switch to keep the account while stopping the upload. If you do not want your totals uploaded, do not sign in — or delete your account, which removes everything.</li>
+  <li>When backup is on, the app uploads <strong>daily numeric totals only</strong> — a short, fixed list of numbers set out in full below.</li>
   <li><strong>Screen content is never uploaded.</strong> The Accessibility service reads on-screen information only to recognise that a short video was watched; that content is discarded immediately and only the resulting count is kept.</li>
+  <li><strong>Friend battles are optional and off unless you turn them on.</strong> They are the only feature that shows any of your information to another person, and then only to friends you invited or whose code you entered — your name, your profile photo, and your daily video total. Nothing else.</li>
 </ul>
 
 <hr>
@@ -89,6 +92,26 @@ displayed and is <strong>not stored</strong> in the app's database.</p>
 the package name and label, and reads screen time only. Their on-screen content is never
 inspected.</p>
 
+<h3>Step count (Physical activity)</h3>
+<p>One of the challenges you can pick to unlock reels is "walk a number of steps". If you choose
+it, the app reads your device's step counter <strong>only while that challenge is on screen</strong>,
+and only to count up to the number of steps needed to finish it.</p>
+<p>To be exact about what this is and is not:</p>
+<ul>
+  <li>The step count is <strong>never written to the database</strong>, never backed up, never
+  uploaded, and never shared with anyone — not with friends, not with us, not with any third
+  party.</li>
+  <li>It is discarded the moment the challenge ends. Nothing about it survives closing the
+  screen.</li>
+  <li>The app does not show you step totals, history, distance, calories, or any other fitness
+  information, and it makes no health or fitness claims. The steps are a lock, not a feature.</li>
+  <li>The app does not connect to Health Connect, Google Fit, or any other health service, and it
+  does not read heart rate or any body sensor.</li>
+  <li>The permission is optional. Deny it and the walk challenge is greyed out with the reason;
+  every other challenge still works, including one that needs no sensor and no permission at
+  all.</li>
+</ul>
+
 <hr>
 
 <h2>What is stored on your device</h2>
@@ -105,11 +128,16 @@ inspected.</p>
 
 <hr>
 
-<h2>Cloud backup (optional)</h2>
+<h2>Cloud backup</h2>
 
-<p>Cloud backup is <strong>off</strong> until you both sign in with Google and choose <strong>"Enable backup"</strong> in
-the dialog shown immediately after sign-in. Declining leaves the app fully functional;
-nothing is uploaded.</p>
+<p>Cloud backup is <strong>enabled automatically when you sign in with Google</strong>, and stays on
+for as long as the account exists. It is not a separate choice and there is no in-app switch to turn
+it off while remaining signed in.</p>
+
+<p><strong>Your control over it is the account itself.</strong> Not signing in means nothing is
+uploaded; the app is fully functional without an account. If you have signed in and want the uploads
+to stop, use <strong>Delete account and backed-up data</strong> in <strong>Settings → Account</strong>,
+which erases everything held on the server and signs you out.</p>
 
 <h3>Signing in</h3>
 <p>Sign-in uses Google. The app receives your Google account identifier, name, email and
@@ -142,24 +170,93 @@ apps you added to tracking, your per-app limits, your settings, or your parental
 sign-in service. Data is held on Supabase infrastructure in <strong>Sydney, Australia</strong> (region
 <code>ap-southeast-2</code>). If you are outside Australia, turning on backup means the data listed
 above is transferred to and stored in Australia.</p>
-<p>Access is enforced by database row-level security: rows are readable and writable only by
-the account that created them. Data is transmitted over HTTPS.</p>
+<p>Access is enforced by database row-level security: backup rows are readable and writable
+only by the account that created them. (Friend battles, described below, are the one
+exception, and only for the specific fields listed there.) Data is transmitted over HTTPS.</p>
 <p>Supabase's privacy policy: <a href="https://supabase.com/privacy">https://supabase.com/privacy</a></p>
 <p>No other third party receives your data.</p>
 
 <hr>
 
+<h2>Friend battles (optional)</h2>
+
+<p>Friend battles are a daily leaderboard against people you invite: whoever watched fewer
+short videos that day is ahead. It is <strong>off unless you turn it on</strong>, and turning it on
+requires you to sign in, agree to cloud backup, and separately accept a screen that lists
+exactly what a friend will see.</p>
+
+<h3>Exactly what a friend can see</h3>
+<table>
+  <tr><th>Field</th><th>What it is</th></tr>
+  <tr><td><code>display_name</code></td><td>Your name, taken from your Google account</td></tr>
+  <tr><td><code>avatar_url</code></td><td>Your Google profile photo</td></tr>
+  <tr><td><code>total_reels</code> (per day)</td><td>How many short videos you watched that day, as a single number</td></tr>
+</table>
+
+<p>That is the entire list. A friend <strong>cannot</strong> see which apps you use, your per-platform
+breakdown, your screen time, your limits, your rules, your streaks, your brain-health score,
+or your email address. The daily backup row described above is not readable by anyone but you.</p>
+
+<h3>Who can see it</h3>
+<p>Only accounts you are mutually connected to. A connection is created in exactly one way:
+someone enters the six-character code the other person shared with them. There is no directory,
+no search by name or email, and no friend-of-friend visibility. Codes are random and are not
+derived from anything about you.</p>
+
+<h3>Turning it off</h3>
+<ul>
+  <li><strong>Remove a friend</strong> — on the Battle screen. The connection is deleted in both directions
+      immediately, and neither of you can see the other again.</li>
+  <li><strong>Leave battles</strong> — on the same screen. Stops sharing new daily totals.</li>
+  <li><strong>Delete your account</strong> — removes your profile, all of your connections and every daily
+      total you shared, along with everything else. See below.</li>
+</ul>
+
+<p>Days you shared while battling remain in your account until you remove the friend or delete
+your account.</p>
+
+<hr>
+
 <h2>Turning backup off, and deleting your data</h2>
 
-<p>All three controls are in the app, under <strong>Settings → your account</strong>:</p>
+<h2>Analytics and crash reporting</h2>
+
+<p>The app uses <strong>Google Firebase Analytics</strong> and <strong>Firebase Crashlytics</strong>.</p>
 
 <ul>
-  <li><strong>Turn backup off</strong> — the <strong>Cloud backup</strong> switch. Uploads stop immediately. Days already
-      backed up stay in your account until you delete them.</li>
-  <li><strong>Sign out</strong> — ends your session on this device and switches backup off.</li>
+  <li><strong>What is collected:</strong> which screens you open, which of the app's own features you use (for example that a challenge was started, completed or abandoned, and which permissions are granted), your device model, operating-system version, app version, country, and — for Crashlytics — the technical details of any crash.</li>
+  <li><strong>Advertising ID.</strong> Firebase Analytics also collects your device's Android advertising ID. The app shows no ads and runs no ad campaigns; the ID is used only to keep analytics counts from treating one device as several. You can reset it, or stop apps receiving it entirely, in <strong>Android Settings &rarr; Privacy &rarr; Ads</strong>. Switching off <strong>Share usage data</strong> in the app stops this along with everything else above.</li>
+  <li><strong>What is never collected:</strong> your reel counts, screen time, streaks, video captions, creator names, or any on-screen content. Analytics carries no information about <em>what</em> you watched.</li>
+  <li><strong>Analytics is on by default.</strong> You can switch it off at any time in <strong>Settings → Account → Share usage data</strong>; collection stops immediately.</li>
+  <li><strong>Crash reports are always sent</strong> while the app is installed, because they contain only diagnostic information about failures and are what allows bugs to be fixed.</li>
+</ul>
+
+<p>This data is processed by Google as part of the Firebase service and is used only to improve the app.</p>
+
+
+<h2>Push notifications</h2>
+
+<p>If you sign in, this device registers a <strong>push token</strong> with your account — a routing
+address that lets Google's messaging service deliver a notification to this phone. It is not usage
+data and says nothing about what you watch. It is used to tell you when a friend accepts a battle
+invite, and occasionally to send app news.</p>
+
+<p>Not signing in means no token is ever registered. Deleting your account deletes the token with
+everything else. You can also turn these notifications off without touching your account, in your
+phone's notification settings. They are split into two channels so you can silence one and keep the
+other: <strong>Updates from LoopOut</strong> (news and tips from us, quiet by default) and
+<strong>Friend activity</strong> (when a friend accepts your invite).</p>
+
+<h2>Deleting your data</h2>
+
+<p>The account controls are in the app, under <strong>Settings → your account</strong>:</p>
+
+<ul>
+  <li><strong>Sign out</strong> — ends your session on this device. Days already backed up stay in your account until you delete them.</li>
   <li><strong>Delete account and backed-up data</strong> — permanently deletes your account and every day you
-      have backed up. This cannot be undone. Your on-device history is not affected; clear the
-      app's storage in Android Settings if you want that gone too.</li>
+      have backed up, along with your battle profile, all of your friend connections and every
+      daily total you shared with them. This cannot be undone. Your on-device history is not
+      affected; clear the app's storage in Android Settings if you want that gone too.</li>
 </ul>
 
 <p>If you cannot reach the app, email
@@ -170,8 +267,11 @@ with and your account and backed-up data will be deleted.</p>
 
 <h2>How the data is used</h2>
 <p>Solely to run the app's features: counting videos, enforcing the limits you set, showing
-your stats and streaks, and — if you enabled it — backing up your daily totals to your own
-account. It is not used for advertising or profiling, and it is not shared with anyone.</p>
+your stats and streaks, and — if you enabled them — backing up your daily totals to your own
+account and showing your daily total to friends you connected with. It is not used for
+advertising or profiling, and it is never sold. Apart from friend battles, which share only
+the three fields listed in that section and only with people you connected to yourself, your
+data is not shared with anyone.</p>
 
 <hr>
 
